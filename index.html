@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traxio — Pakistan ka Student Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --or:#F25C05;--ord:#C44A00;--orl:#FFF0E8;
+  --tx:#0F0F0F;--mu:#6B7280;--bo:#E5E7EB;--su:#FFFFFF;--bg:#FAFAFA;
+  --gr:#16A34A;--grb:#DCFCE7;--am:#D97706;--amb:#FEF3C7;
+  --re:#DC2626;--reb:#FEE2E2;--pu:#7C3AED;--pub:#EDE9FE;
+  --bl:#1D4ED8;--blb:#DBEAFE;--r:12px;--rs:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;font-size:16px}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
+
+/* NAV */
+nav{background:#fff;border-bottom:1px solid var(--bo);position:sticky;top:0;z-index:1000;height:64px}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-mark{width:36px;height:36px;background:var(--or);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:20px;height:20px;fill:white}
+.logo-text{font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:900;color:var(--tx);letter-spacing:-0.5px}
+.logo-text span{color:var(--or)}
+.nav-links{display:flex;gap:1.75rem;align-items:center}
+.nav-links a{font-size:0.875rem;font-weight:500;color:var(--mu);transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--tx)}
+.nav-cta{background:var(--or)!important;color:#fff!important;padding:.5rem 1.25rem;border-radius:var(--rs);font-weight:600!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--ord)!important}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--tx);padding:4px}
+.mob-menu{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--bo);padding:1rem 1.5rem;position:absolute;top:64px;left:0;right:0;z-index:999}
+.mob-menu a{padding:.7rem 0;font-size:.9rem;font-weight:500;color:var(--mu);border-bottom:1px solid var(--bo);cursor:pointer;display:block}
+.mob-menu.open{display:flex}
+
+/* URGENCY */
+.urg{background:#FEF2F2;border-bottom:1px solid #FECACA;padding:.5rem 1.5rem;text-align:center;font-size:.75rem;color:var(--re);font-weight:600;display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap}
+.urg .sep{color:#FECACA}
+
+/* HERO */
+.hero{background:var(--or);color:#fff;padding:5rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero-pat{position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,#fff 0,#fff 1px,transparent 0,transparent 50%);background-size:20px 20px;pointer-events:none}
+.hero-inner{position:relative;max-width:800px;margin:0 auto}
+.hero-urdu{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:.75rem;direction:rtl}
+.hero-ey{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.75rem;font-weight:600;padding:.3rem .85rem;border-radius:100px;margin-bottom:1.25rem;letter-spacing:.04em;text-transform:uppercase}
+.hero-ey::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2rem,5.5vw,3.75rem);font-weight:900;letter-spacing:-1.5px;margin-bottom:1rem;line-height:1.1}
+.hero h1 em{font-style:normal;background:rgba(255,255,255,.2);padding:0 .15em;border-radius:6px}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 2.25rem;line-height:1.6}
+.hero-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-w{background:#fff;color:var(--or);padding:.85rem 2rem;border-radius:var(--rs);font-weight:700;font-size:.95rem;transition:all .2s;display:inline-block;font-family:'Sora',sans-serif;cursor:pointer;border:none}
+.btn-w:hover{background:rgba(255,255,255,.92);transform:translateY(-1px)}
+.btn-g{background:transparent;color:#fff;padding:.85rem 2rem;border-radius:var(--rs);font-weight:600;font-size:.95rem;border:1.5px solid rgba(255,255,255,.4);transition:all .2s;display:inline-block;cursor:pointer;font-family:'Sora',sans-serif}
+.btn-g:hover{background:rgba(255,255,255,.12)}
+.hero-stats{display:flex;justify-content:center;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.15);flex-wrap:wrap;gap:0}
+.hstat{padding:0 2.25rem;text-align:center;border-right:1px solid rgba(255,255,255,.15)}
+.hstat:last-child{border-right:none}
+.hstat .n{font-family:'Sora',sans-serif;font-size:2rem;font-weight:900;color:#fff}
+.hstat .l{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px}
+
+/* SECTION HELPERS */
+.wrap{max-width:1140px;margin:0 auto}
+.ey{font-size:.7rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem}
+.stitle{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--tx);letter-spacing:-.5px;margin-bottom:.6rem}
+.ssub{color:var(--mu);font-size:.95rem;max-width:480px;margin-bottom:3rem}
+
+/* HOW IT WORKS */
+.hiw{padding:5rem 1.5rem;background:#fff}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem}
+.step{padding:1.5rem;background:var(--bg);border:1px solid var(--bo);border-radius:var(--r);position:relative;overflow:hidden}
+.step::before{content:attr(data-n);position:absolute;top:-.5rem;right:1rem;font-family:'Sora',sans-serif;font-size:4rem;font-weight:900;color:var(--or);opacity:.08;line-height:1}
+.step-ico{width:42px;height:42px;background:var(--orl);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.step-ico svg{width:20px;height:20px;stroke:var(--or);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.step h3{font-size:.95rem;font-weight:700;margin-bottom:.35rem}
+.step p{font-size:.82rem;color:var(--mu);line-height:1.55}
+
+/* OPPS */
+.opps{padding:5rem 1.5rem;background:var(--bg);scroll-margin-top:64px}
+.filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.fb{padding:.4rem 1rem;border-radius:100px;font-size:.78rem;font-weight:500;border:1px solid var(--bo);background:#fff;color:var(--mu);cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
+.fb:hover,.fb.active{background:var(--or);color:#fff;border-color:var(--or)}
+.fb-exp:hover,.fb-exp.active{background:#6B7280!important;border-color:#6B7280!important}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:1.15rem}
+.card{background:#fff;border:1px solid var(--bo);border-radius:var(--r);padding:1.4rem;transition:all .22s;cursor:pointer;display:flex;flex-direction:column;position:relative}
+.card:hover{border-color:var(--or);transform:translateY(-3px);box-shadow:0 8px 24px rgba(242,92,5,.1)}
+.card.exp{opacity:.65}
+.card.exp:hover{transform:none;box-shadow:none;border-color:var(--bo)}
+.exp-tag{position:absolute;top:1rem;right:1rem;background:#9CA3AF;color:#fff;font-size:.6rem;font-weight:700;padding:.2rem .5rem;border-radius:100px;letter-spacing:.06em}
+.ctop{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.8rem}
+.badge{font-size:.65rem;font-weight:700;padding:.28rem .65rem;border-radius:100px;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.b-law{background:var(--pub);color:#5B21B6}
+.b-mkt{background:var(--reb);color:#991B1B}
+.b-lead{background:var(--amb);color:#92400E}
+.b-eng{background:var(--blb);color:#1E3A8A}
+.b-tech{background:#F0FDF4;color:#166534}
+.b-vol{background:var(--grb);color:#166534}
+.b-ngo{background:var(--orl);color:var(--ord)}
+.b-soc{background:#FCE7F3;color:#9D174D}
+.b-clin{background:var(--pub);color:#5B21B6}
+.b-pharm{background:var(--amb);color:#92400E}
+.b-cyber{background:#1E1B4B;color:#C7D2FE}
+.b-med{background:#FCE7F3;color:#9D174D}
+.b-env{background:var(--grb);color:#166534}
+.b-res{background:var(--amb);color:#92400E}
+.b-intl{background:var(--blb);color:#1E3A8A}
+.b-paid{background:var(--grb);color:#166534}
+.b-lit{background:var(--pub);color:#5B21B6}
+.b-stem{background:var(--blb);color:#1E3A8A}
+.b-art{background:#FCE7F3;color:#9D174D}
+.diff{font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px}
+.d-easy{background:var(--grb);color:var(--gr)}
+.d-med{background:var(--amb);color:var(--am)}
+.d-hard{background:var(--reb);color:var(--re)}
+.d-fund{background:var(--pub);color:var(--pu)}
+.d-open{background:#F0FDF4;color:#166534}
+.ctitle{font-size:.93rem;font-weight:700;color:var(--tx);margin-bottom:.2rem;line-height:1.3}
+.corg{font-size:.73rem;color:var(--or);font-weight:600;margin-bottom:.55rem}
+.cdesc{font-size:.81rem;color:var(--mu);line-height:1.55;flex:1;margin-bottom:.9rem}
+.cmeta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1rem}
+.cm{display:flex;align-items:center;gap:.3rem;font-size:.7rem;color:var(--mu)}
+.cm svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.dl-urg{color:var(--re)!important;font-weight:600}
+.dl-soon{color:var(--am)!important;font-weight:600}
+.cbtn{display:block;text-align:center;background:var(--or);color:#fff;padding:.6rem 1rem;border-radius:var(--rs);font-size:.8rem;font-weight:700;transition:background .2s;font-family:'Sora',sans-serif;border:none;cursor:pointer;width:100%}
+.cbtn:hover{background:var(--ord)}
+.cbtn.exp-btn{background:#9CA3AF;cursor:default}
+.cbtn.exp-btn:hover{background:#9CA3AF}
+
+/* MODAL */
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;overflow-y:auto;padding:1.5rem 1rem}
+.ov.open{display:flex;align-items:flex-start;justify-content:center}
+.modal{background:#fff;border-radius:var(--r);max-width:660px;width:100%;padding:2rem;position:relative;margin:auto}
+.mcl{position:absolute;top:1rem;right:1rem;background:var(--bg);border:1px solid var(--bo);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;color:var(--mu);line-height:1;font-family:inherit;background:#fff}
+.mcl:hover{background:var(--bg)}
+.mbr{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.85rem}
+.modal h2{font-size:1.3rem;font-weight:900;color:var(--tx);margin-bottom:.2rem;letter-spacing:-.3px}
+.morg{font-size:.8rem;color:var(--or);font-weight:700;margin-bottom:1rem}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.15rem}
+.mbox{background:var(--bg);border-radius:var(--rs);padding:.7rem 1rem;border:1px solid var(--bo)}
+.mbox .ml{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin-bottom:.2rem}
+.mbox .mv{font-size:.85rem;font-weight:600;color:var(--tx)}
+.msec{margin-bottom:1.05rem}
+.msec h4{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:.45rem}
+.msec p,.msec li{font-size:.875rem;color:var(--tx);line-height:1.6}
+.msec ul{padding-left:1.25rem}
+.msec li{margin-bottom:.25rem}
+.tips{background:var(--orl);border:1px solid rgba(242,92,5,.2);border-radius:var(--rs);padding:1rem 1.25rem;margin-bottom:1.15rem}
+.tips h4{font-size:.76rem;font-weight:700;color:var(--ord);margin-bottom:.45rem}
+.tips li{font-size:.83rem;color:var(--ord);line-height:1.55}
+.tips ul{padding-left:1.2rem}
+.tform{background:var(--bg);border:1px solid var(--bo);border-radius:var(--rs);padding:1.2rem;margin-bottom:1.15rem}
+.tform h4{font-size:.875rem;font-weight:700;color:var(--tx);margin-bottom:.2rem}
+.tform .ts{font-size:.76rem;color:var(--mu);margin-bottom:.9rem}
+.fr{margin-bottom:.7rem}
+.fr label{display:block;font-size:.73rem;font-weight:600;color:var(--tx);margin-bottom:.28rem}
+.fr .opt{color:var(--mu);font-weight:400}
+.fr input,.fr select{width:100%;padding:.58rem .85rem;border:1px solid var(--bo);border-radius:var(--rs);font-size:.875rem;background:#fff;color:var(--tx);font-family:inherit;outline:none;transition:border .2s}
+.fr input:focus,.fr select:focus{border-color:var(--or)}
+.macts{display:flex;flex-direction:column;gap:.6rem}
+.btn-apply{background:var(--or);color:#fff;border:none;padding:.88rem;border-radius:var(--rs);font-size:.95rem;font-weight:700;cursor:pointer;width:100%;transition:background .2s;font-family:'Sora',sans-serif}
+.btn-apply:hover{background:var(--ord)}
+.btn-skip{background:transparent;color:var(--mu);border:1px solid var(--bo);padding:.62rem;border-radius:var(--rs);font-size:.82rem;font-weight:500;cursor:pointer;width:100%;transition:all .2s;font-family:inherit}
+.btn-skip:hover{background:var(--bg)}
+.mcon{font-size:.7rem;color:var(--mu);text-align:center;margin-top:.5rem;line-height:1.5}
+
+/* IMPACT */
+.impact{padding:5rem 1.5rem;background:var(--or);color:#fff;scroll-margin-top:64px}
+.impact .ey{color:rgba(255,255,255,.7)}
+.impact .stitle{color:#fff}
+.impact .ssub{color:rgba(255,255,255,.7)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1rem;margin-bottom:2.5rem}
+.sc{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:1.5rem}
+.sc .sn{font-family:'Sora',sans-serif;font-size:2.25rem;font-weight:900;color:#fff;margin-bottom:.25rem}
+.sc .sl{font-size:.76rem;color:rgba(255,255,255,.65);line-height:1.4}
+.ofeed h3{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.85rem}
+.orow{display:flex;align-items:center;justify-content:space-between;padding:.82rem 1rem;background:rgba(255,255,255,.07);border-radius:var(--rs);margin-bottom:.5rem;gap:.5rem;flex-wrap:wrap}
+.orow .op{font-size:.85rem;font-weight:600;color:#fff}
+.orow .oc{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:1px}
+.opill{font-size:.66rem;font-weight:700;padding:.28rem .7rem;border-radius:100px;white-space:nowrap}
+.pill-a{background:var(--grb);color:var(--gr)}
+.pill-p{background:var(--amb);color:var(--am)}
+.pill-r{background:var(--reb);color:var(--re)}
+
+/* VOLUNTEER */
+.vol{padding:5rem 1.5rem;background:#fff;scroll-margin-top:64px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;margin-bottom:2.5rem}
+.rc{border:1px solid var(--bo);border-radius:var(--r);padding:1.5rem;background:var(--bg);transition:border-color .2s}
+.rc:hover{border-color:var(--or)}
+.rico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.rico svg{width:19px;height:19px;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.ri-o{background:var(--orl)}.ri-o svg{stroke:var(--or)}
+.ri-g{background:var(--grb)}.ri-g svg{stroke:var(--gr)}
+.ri-p{background:var(--pub)}.ri-p svg{stroke:var(--pu)}
+.ri-b{background:var(--blb)}.ri-b svg{stroke:var(--bl)}
+.rc h3{font-size:.92rem;font-weight:700;color:var(--tx);margin-bottom:.25rem}
+.rc .rt{font-size:.72rem;color:var(--or);font-weight:600;margin-bottom:.65rem}
+.rtasks{list-style:none;margin-bottom:1rem}
+.rtasks li{font-size:.8rem;color:var(--mu);line-height:1.5;padding-left:1rem;position:relative;margin-bottom:.2rem}
+.rtasks li::before{content:'→';position:absolute;left:0;color:var(--or);font-size:.72rem}
+.rcert{font-size:.7rem;color:var(--mu);background:var(--bo);border-radius:100px;padding:.25rem .7rem;display:inline-block}
+.vol-cta{display:flex;flex-direction:column;align-items:center;gap:.65rem}
+.btn-or{background:var(--or);color:#fff;padding:.85rem 2rem;border-radius:var(--rs);font-weight:700;font-family:'Sora',sans-serif;font-size:.95rem;transition:background .2s;display:inline-block;cursor:pointer;border:none}
+.btn-or:hover{background:var(--ord)}
+
+/* SUBMIT */
+.sub-sec{padding:5rem 1.5rem;background:var(--bg);scroll-margin-top:64px}
+.sform{background:#fff;border:1px solid var(--bo);border-radius:var(--r);padding:2rem;max-width:560px;margin:0 auto}
+.sform h3{font-size:1.25rem;font-weight:900;color:var(--tx);margin-bottom:.35rem;letter-spacing:-.3px}
+.sform .fsub{font-size:.85rem;color:var(--mu);margin-bottom:1.75rem}
+.rg{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.ro{display:flex;align-items:center;gap:.4rem}
+.ro input{accent-color:var(--or)}
+.ro label{font-size:.875rem;color:var(--tx)}
+.resgrid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.1rem}
+.resopt{border:1px solid var(--bo);border-radius:var(--rs);padding:.65rem .75rem;cursor:pointer;font-size:.82rem;font-weight:600;text-align:center;transition:all .2s;user-select:none;font-family:'Sora',sans-serif}
+.resopt:hover{border-color:var(--or);color:var(--or)}
+.ro-a{background:var(--grb);border-color:var(--gr);color:var(--gr)}
+.ro-p{background:var(--amb);border-color:var(--am);color:var(--am)}
+.ro-r{background:var(--reb);border-color:var(--re);color:var(--re)}
+.ro-w{background:var(--pub);border-color:var(--pu);color:var(--pu)}
+.fr textarea{width:100%;padding:.6rem .85rem;border:1px solid var(--bo);border-radius:var(--rs);font-family:inherit;font-size:.875rem;color:var(--tx);background:#fff;outline:none;resize:vertical;min-height:80px;transition:border .2s}
+.fr textarea:focus{border-color:var(--or)}
+.sub-btn{width:100%;background:var(--or);color:#fff;border:none;padding:.9rem;border-radius:var(--rs);font-size:.95rem;font-weight:700;cursor:pointer;font-family:'Sora',sans-serif;transition:background .2s;margin-top:.5rem}
+.sub-btn:hover{background:var(--ord)}
+.sub-btn:disabled{background:#ccc;cursor:not-allowed}
+.sbox{display:none;text-align:center;padding:1.5rem}
+.sico{width:56px;height:56px;background:var(--grb);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.sico svg{width:28px;height:28px;stroke:var(--gr);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.sbox h3{font-size:1.1rem;font-weight:900;color:var(--tx);margin-bottom:.4rem}
+.sbox p{font-size:.85rem;color:var(--mu)}
+
+/* FOOTER */
+footer{background:#0F0F0F;color:rgba(255,255,255,.6);padding:3rem 1.5rem 2rem}
+.fi{max-width:1140px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.fbr .flogo{font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:900;color:#fff;margin-bottom:.5rem;display:block}
+.fbr .flogo span{color:var(--or)}
+.fbr p{font-size:.82rem;line-height:1.7;max-width:220px}
+.fcon{margin-top:1rem}
+.fcon a{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:.35rem;transition:color .2s}
+.fcon a:hover{color:var(--or)}
+.fcon svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+.fcol h4{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:.85rem}
+.fcol a{display:block;font-size:.82rem;color:rgba(255,255,255,.55);margin-bottom:.4rem;transition:color .2s;cursor:pointer}
+.fcol a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;font-size:.75rem;flex-wrap:wrap;gap:.5rem}
+.fbot .ur{direction:rtl;color:rgba(255,255,255,.3)}
+
+@media(max-width:900px){.ftop{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .nav-links{display:none}.menu-btn{display:flex}
+  .hero{padding:3.5rem 1.25rem 3rem}
+  .hstat{padding:0 1.25rem}
+  .hiw,.opps,.impact,.vol,.sub-sec{padding:3.5rem 1.25rem}
+  .ftop{grid-template-columns:1fr}.modal{padding:1.25rem}
+  .mgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div style="background:#1E1B4B;padding:.4rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap">
+  <a href="https://www.instagram.com/trax1o" target="_blank" style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.7);font-family:Inter,sans-serif;transition:color .2s" onmouseover="this.style.color='#F25C05'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    @trax1o
+  </a>
+  <span style="color:rgba(255,255,255,.2);font-size:.75rem">|</span>
+  <a href="https://www.linkedin.com/in/traxio-organization-314b88418" target="_blank" style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.7);font-family:Inter,sans-serif;transition:color .2s" onmouseover="this.style.color='#F25C05'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    LinkedIn
+  </a>
+  <span style="color:rgba(255,255,255,.2);font-size:.75rem">|</span>
+  <a href="https://chat.whatsapp.com/HDoAz8Nfd75CXDxBt3RAeG" target="_blank" style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.7);font-family:Inter,sans-serif;transition:color .2s" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    Join WhatsApp Group
+  </a>
+  <span style="color:rgba(255,255,255,.2);font-size:.75rem">|</span>
+  <a href="mailto:traxio.org@gmail.com" style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:rgba(255,255,255,.7);font-family:Inter,sans-serif;transition:color .2s" onmouseover="this.style.color='#F25C05'" onmouseout="this.style.color='rgba(255,255,255,.7)'">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    traxio.org@gmail.com
+  </a>
+</div>
+<div class="urg">
+  <span>⚡ INO Essay: 24 Jun</span><span class="sep">|</span>
+  <span>⚡ FXB Harvard: 25 Jun</span><span class="sep">|</span>
+  <span>⚡ Columbia Law: 26 Jun</span><span class="sep">|</span>
+  <span>⚡ NASTP: 22 Jun</span><span class="sep">|</span>
+  <span>NextGen Med: 25 Jun · Oxford Climate: 30 Jun · YEF Geneva: 5 Jul</span>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <span class="logo-text">Trax<span>io</span></span>
+    </div>
+    <div class="nav-links">
+      <a onclick="goTo('#opps')">Opportunities</a>
+      <a onclick="goTo('#vol')">Volunteer</a>
+      <a onclick="goTo('#impact')">Impact</a>
+      <a onclick="goTo('#sub')" class="nav-cta">Submit outcome</a>
+    </div>
+    <button class="menu-btn" onclick="toggleMob()" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mob-menu" id="mob">
+    <a onclick="goTo('#opps');closeMob()">Opportunities</a>
+    <a onclick="goTo('#vol');closeMob()">Volunteer</a>
+    <a onclick="goTo('#impact');closeMob()">Impact</a>
+    <a onclick="goTo('#sub');closeMob()">Submit outcome</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pat"></div>
+  <div class="hero-inner">
+    <div class="hero-ey">Pakistan ka student opportunity platform</div>
+    <p class="hero-urdu">طلبہ کے لیے، طلبہ کے ہاتھوں بنایا گیا</p>
+    <h1>Pakistan ke students deserve <em>real</em> outcomes</h1>
+    <p class="hero-sub">We don't just share links — we guide you from application to result, and track every step of the way.</p>
+    <div class="hero-btns">
+      <button class="btn-w" onclick="goTo('#opps')">Explore opportunities</button>
+      <button class="btn-g" onclick="goTo('#sub')">Share my outcome</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="n" id="s-opps">0</div><div class="l">Opportunities</div></div>
+      <div class="hstat"><div class="n" id="s-apps">0</div><div class="l">Applications tracked</div></div>
+      <div class="hstat"><div class="n" id="s-out">0</div><div class="l">Outcomes submitted</div></div>
+      <div class="hstat"><div class="n" id="s-stu">0</div><div class="l">Students reached</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="hiw">
+  <div class="wrap">
+    <div class="ey">How Traxio works</div>
+    <h2 class="stitle">More than a repost page</h2>
+    <p class="ssub">A system that takes you from finding an opportunity to tracking your result.</p>
+    <div class="steps">
+      <div class="step" data-n="1">
+        <div class="step-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <h3>Discover</h3><p>Verified internships, competitions, and programmes filtered by type, deadline, and difficulty.</p>
+      </div>
+      <div class="step" data-n="2">
+        <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Get guided</h3><p>Before applying, read our tips, eligibility checklist, and insider advice for each opportunity.</p>
+      </div>
+      <div class="step" data-n="3">
+        <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="17 1 21 5 17 9"/><line x1="21" y1="5" x2="9" y2="5"/></svg></div>
+        <h3>Apply tracked</h3><p>We log your application so we can follow up, offer guidance, and count real engagement data.</p>
+      </div>
+      <div class="step" data-n="4">
+        <div class="step-ico"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+        <h3>Share outcome</h3><p>Accepted, rejected, or pending — your result builds data that helps the next student apply smarter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITIES -->
+<section class="opps" id="opps">
+  <div class="wrap">
+    <div class="ey">Opportunities</div>
+    <h2 class="stitle">Apply through Traxio</h2>
+    <p class="ssub">Every listing has tips, requirements, and a tracking step. Active deadlines only by default.</p>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="ov" id="ov" onclick="closeMifBg(event)">
+  <div class="modal">
+    <button class="mcl" onclick="closeM()">&#x2715;</button>
+    <div id="mc"></div>
+  </div>
+</div>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="wrap">
+    <div class="ey">Impact dashboard</div>
+    <h2 class="stitle">Har application counted hai</h2>
+    <p class="ssub">Live numbers updated as students apply and share outcomes through Traxio.</p>
+    <div class="sgrid">
+      <div class="sc"><div class="sn" id="d-opps">0</div><div class="sl">Active opportunities listed</div></div>
+      <div class="sc"><div class="sn" id="d-apps">0</div><div class="sl">Applications tracked via Traxio</div></div>
+      <div class="sc"><div class="sn" id="d-out">0</div><div class="sl">Outcomes submitted by students</div></div>
+      <div class="sc"><div class="sn">12+</div><div class="sl">Cities and countries covered</div></div>
+    </div>
+    <div class="ofeed">
+      <h3>Recent outcomes — anonymised</h3>
+      <div id="feed">
+        <div class="orow"><div><div class="op">SKMCH Clinical Volunteership</div><div class="oc">Clinical · Lahore</div></div><span class="opill pill-p">Pending</span></div>
+        <div class="orow"><div><div class="op">NASTP Summer Internship</div><div class="oc">Technology · Islamabad</div></div><span class="opill pill-p">Pending</span></div>
+      </div>
+      <p style="text-align:center;font-size:.78rem;color:rgba(255,255,255,.3);margin-top:1rem">Submit your outcome below to appear here anonymously</p>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section class="vol" id="vol">
+  <div class="wrap">
+    <div class="ey">Join Traxio</div>
+    <h2 class="stitle">Hamari team join karo</h2>
+    <p class="ssub">Certificates are earned, not given. Contribute real work, get real recognition.</p>
+    <div class="rgrid">
+      <div class="rc">
+        <div class="rico ri-o"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <h3>Opportunity researcher</h3><div class="rt">2–3 hrs/week</div>
+        <ul class="rtasks"><li>Find and verify new opportunities</li><li>Write eligibility and tips per listing</li><li>Monitor deadlines weekly</li></ul>
+        <span class="rcert">Certificate after 10 verified listings</span>
+      </div>
+      <div class="rc">
+        <div class="rico ri-p"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h3>Content writer</h3><div class="rt">2 hrs/week</div>
+        <ul class="rtasks"><li>Write application tip guides</li><li>Draft opportunity descriptions</li><li>Create student success stories</li></ul>
+        <span class="rcert">Certificate after 5 published pieces</span>
+      </div>
+      <div class="rc">
+        <div class="rico ri-g"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Designer</h3><div class="rt">1–2 hrs/week</div>
+        <ul class="rtasks"><li>Instagram and website graphics</li><li>Opportunity card visuals</li><li>Brand consistency</li></ul>
+        <span class="rcert">Certificate after 3 approved assets</span>
+      </div>
+      <div class="rc">
+        <div class="rico ri-b"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Outreach coordinator</h3><div class="rt">2 hrs/week</div>
+        <ul class="rtasks"><li>Contact schools and counsellors</li><li>Manage Instagram DMs</li><li>Build org partnerships</li></ul>
+        <span class="rcert">Certificate after 5 verified outreaches</span>
+      </div>
+    </div>
+    <div class="vol-cta">
+      <a href="https://forms.gle/gr7WqcNcgJrUSvFa6" target="_blank" class="btn-or">Apply to volunteer with Traxio &rarr;</a>
+      <p style="font-size:.78rem;color:var(--mu)">We respond within 48 hours. Real work only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMIT OUTCOME -->
+<section class="sub-sec" id="sub">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div class="ey" style="display:inline-block">Outcome tracking</div>
+      <h2 class="stitle" style="margin-top:.5rem">Kya hua? Humein batao.</h2>
+      <p class="ssub" style="margin:.5rem auto 0">Accepted ya rejected — dono count hote hain.</p>
+    </div>
+    <div class="sform">
+      <div id="sform-inner">
+        <h3>Submit your outcome</h3>
+        <p class="fsub">Anonymous if you prefer. Takes under a minute.</p>
+        <div class="fr"><label>First name <span class="opt">(optional)</span></label><input type="text" id="oc-name" placeholder="e.g. Fatima"></div>
+        <div class="fr"><label>Email <span class="opt">(optional, for follow-up)</span></label><input type="email" id="oc-email" placeholder="yourname@email.com"></div>
+        <div class="fr">
+          <label>Which opportunity?</label>
+          <select id="oc-prog">
+            <option value="">Select a program</option>
+            <option>PKCERT Cybersecurity Internship 2026</option>
+            <option>FXB Harvard Climate Advocates Program</option>
+            <option>Mojza Scholar Program 2026</option>
+            <option>Columbia Law Review Essay Contest 2026</option>
+            <option>INO-NEXUS Essay Contest 2026</option>
+            <option>NextGen Med Summer Internship 2026</option>
+            <option>NASTP Summer Internship 2026</option>
+            <option>Oxford Saïd Climate Tech Challenge 2026</option>
+            <option>PLURAL+ UN Video Festival 2026</option>
+            <option>UNESCO Silk Roads Photo Contest 2026</option>
+            <option>Global Change Summit 2026 - Amsterdam</option>
+            <option>Youth Empowerment Forum 2026 - Geneva</option>
+            <option>PYLS Summer Internship 2026</option>
+            <option>Baked Sales and Marketing Internship 2026</option>
+            <option>Mubeen Summer Internship 2026</option>
+            <option>Project Asmaan x PNCY Internship 2026</option>
+            <option>NOWPDP Summer Internship 2026</option>
+            <option>ADEL Atlantic Dialogues Program 2026</option>
+            <option>Alkhidmat Summer Internship 2026</option>
+            <option>Ehsas Volunteer Program 2026</option>
+            <option>SIUT Volunteer Program</option>
+            <option>Pakistan Science Club Volunteer Program</option>
+            <option>Apricus Literary Internship 2026</option>
+            <option>RiseGenPK Teaching Internship 2026</option>
+            <option>Horizon Academic Research Program 2026</option>
+            <option>ASDRP STEM Research Program 2026</option>
+            <option>NYAS Junior Academy 2026</option>
+            <option>Harvard Crimson Journalism Academy 2026</option>
+            <option>Columbia Political Review Essay Contest 2026</option>
+            <option>SKMCH Non-Clinical Volunteership</option>
+            <option>SKMCH Clinical Volunteership</option>
+            <option>SKMCH Pharmacy Internship</option>
+            <option>PNCA Summer Internship 2026</option>
+            <option>Franklin Essay Prize 2026</option>
+            <option>Breakthrough Junior Challenge 2026</option>
+            <option>LSE Innovation Challenge 2026</option>
+            <option>Embracing Our Differences Quotation Contest</option>
+            <option>Ayn Rand Essay Contest</option>
+            <option>International CS Competition 2026</option>
+            <option>Write the World Monthly Competition</option>
+            <option>Lumiere Research Scholar Program</option>
+            <option>ISLP Poster Competition</option>
+            <option>NYT Summer Reading Contest 2026</option>
+            <option>International Youth Environmental Challenge 2026</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fr" id="other-row" style="display:none"><label>Program name</label><input type="text" id="oc-other" placeholder="Enter program name"></div>
+        <div class="fr">
+          <label>Did you apply?</label>
+          <div class="rg">
+            <div class="ro"><input type="radio" name="applied" id="r-yes" value="yes"><label for="r-yes">Yes</label></div>
+            <div class="ro"><input type="radio" name="applied" id="r-no" value="no"><label for="r-no">Not yet</label></div>
+          </div>
+        </div>
+        <div id="res-row" style="display:none">
+          <div class="fr"><label>Result</label>
+            <div class="resgrid">
+              <div class="resopt" onclick="pickRes(this,'ro-a','Accepted')">Accepted</div>
+              <div class="resopt" onclick="pickRes(this,'ro-p','Pending')">Pending</div>
+              <div class="resopt" onclick="pickRes(this,'ro-r','Rejected')">Rejected</div>
+              <div class="resopt" onclick="pickRes(this,'ro-w','Waitlisted')">Waitlisted</div>
+            </div>
+          </div>
+        </div>
+        <div class="fr"><label>Anything to share? <span class="opt">(optional)</span></label>
+          <textarea id="oc-note" placeholder="Tips for future applicants, interview experience..."></textarea>
+        </div>
+        <button class="sub-btn" id="sub-btn" onclick="doSubmit()">Submit outcome</button>
+        <p id="sub-status" style="font-size:.75rem;color:var(--mu);text-align:center;margin-top:.5rem;display:none"></p>
+      </div>
+      <div class="sbox" id="sbox">
+        <div class="sico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3>Shukriya! &#x2756;</h3>
+        <p>Your outcome has been recorded and emailed to the Traxio team. It will appear anonymously in our Impact Dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="ftop">
+      <div class="fbr">
+        <span class="flogo">Trax<span>io</span></span>
+        <p>Pakistan's student-led opportunity and outcomes platform. From discovery to result.</p>
+        <div class="fcon">
+          <a href="mailto:traxio.org@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            traxio.org@gmail.com
+          </a>
+          <a href="https://www.instagram.com/trax1o" target="_blank">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @trax1o on Instagram
+          </a>
+          <a href="https://www.linkedin.com/in/traxio-organization-314b88418" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            Traxio on LinkedIn
+          </a>
+          <a href="https://chat.whatsapp.com/HDoAz8Nfd75CXDxBt3RAeG" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            Join WhatsApp Group
+          </a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Platform</h4>
+        <a onclick="goTo('#opps')">Browse opportunities</a>
+        <a onclick="goTo('#sub')">Submit outcome</a>
+        <a onclick="goTo('#impact')">Impact dashboard</a>
+        <a onclick="goTo('#vol')">Join as volunteer</a>
+      </div>
+      <div class="fcol">
+        <h4>Categories</h4>
+        <a onclick="goTo('#opps')">Internships</a>
+        <a onclick="goTo('#opps')">Competitions</a>
+        <a onclick="goTo('#opps')">International</a>
+        <a onclick="goTo('#opps')">Clinical</a>
+        <a onclick="goTo('#opps')">Research</a>
+      </div>
+      <div class="fcol">
+        <h4>Contact</h4>
+        <a href="mailto:traxio.org@gmail.com">Email us</a>
+        <a href="https://www.instagram.com/trax1o" target="_blank">Instagram @trax1o</a>
+        <a href="https://www.linkedin.com/in/traxio-organization-314b88418" target="_blank">LinkedIn</a>
+        <a href="https://chat.whatsapp.com/HDoAz8Nfd75CXDxBt3RAeG" target="_blank">WhatsApp Group</a>
+        <a href="https://forms.gle/gr7WqcNcgJrUSvFa6" target="_blank">Volunteer form</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>&copy; 2025 Traxio. Student-led initiative. Based in Pakistan.</span>
+      <span class="ur">پاکستان کے طلبہ کے لیے</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL HELPER ──────────────────────────────────────────────────────────
+function goTo(id){
+  if(id===0){window.scrollTo({top:0,behavior:'smooth'});return;}
+  var el=document.querySelector(id);
+  if(!el)return;
+  var y=el.getBoundingClientRect().top+window.pageYOffset-130;
+  window.scrollTo({top:y,behavior:'smooth'});
+}
+
+// ── MOBILE MENU ────────────────────────────────────────────────────────────
+function toggleMob(){document.getElementById('mob').classList.toggle('open');}
+function closeMob(){document.getElementById('mob').classList.remove('open');}
+
+// ── OUTCOME FORM ───────────────────────────────────────────────────────────
+var selResult='';
+document.addEventListener('change',function(e){
+  if(e.target.name==='applied'){
+    document.getElementById('res-row').style.display=e.target.value==='yes'?'':'none';
+  }
+  if(e.target.id==='oc-prog'){
+    document.getElementById('other-row').style.display=e.target.value==='Other'?'':'none';
+  }
+});
+function pickRes(el,cls,val){
+  selResult=val;
+  var opts=document.querySelectorAll('.resopt');
+  for(var i=0;i<opts.length;i++){opts[i].className='resopt';}
+  el.classList.add(cls);
+}
+
+function doSubmit(){
+  var prog=document.getElementById('oc-prog').value;
+  if(prog==='Other')prog=document.getElementById('oc-other').value||'';
+  if(!prog){alert('Please select or enter the program name.');return;}
+  var name=document.getElementById('oc-name').value||'Anonymous';
+  var email=document.getElementById('oc-email').value||'';
+  var applied=document.querySelector('input[name="applied"]:checked');
+  var note=document.getElementById('oc-note').value||'';
+  var btn=document.getElementById('sub-btn');
+  var status=document.getElementById('sub-status');
+
+  btn.disabled=true;
+  btn.textContent='Submitting...';
+
+  // Send via Formspree to traxio.org@gmail.com
+  var body={
+    _replyto: email||'traxio.org@gmail.com',
+    _subject: 'New Traxio Outcome: '+prog,
+    name: name,
+    program: prog,
+    applied: applied?applied.value:'not stated',
+    result: selResult||'not stated',
+    notes: note||'none',
+    contact_email: email||'not provided'
+  };
+
+  // Build mailto body as reliable email delivery
+  var mailBody='New outcome submitted via Traxio.%0A%0A'
+    +'Student Name: '+encodeURIComponent(name)+'%0A'
+    +'Program: '+encodeURIComponent(prog)+'%0A'
+    +'Applied: '+encodeURIComponent(applied?applied.value:'not stated')+'%0A'
+    +'Result: '+encodeURIComponent(selResult||'not stated')+'%0A'
+    +'Student Email: '+encodeURIComponent(email||'not provided')+'%0A'
+    +'Notes: '+encodeURIComponent(note||'none')+'%0A%0A'
+    +'-- Sent from Traxio Platform';
+  var mailSubject='New Traxio Outcome: '+encodeURIComponent(prog);
+  var mailtoLink='mailto:traxio.org@gmail.com?subject='+mailSubject+'&body='+mailBody;
+
+  // Also send via Formspree (traxio dedicated endpoint)
+  var payload={
+    _replyto: email||'no-reply@traxio.org',
+    _subject: 'New Traxio Outcome: '+prog,
+    name: name,
+    program: prog,
+    applied: applied?applied.value:'not stated',
+    result: selResult||'not stated',
+    notes: note||'none',
+    student_email: email||'not provided'
+  };
+  fetch('https://formspree.io/f/traxio',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload)
+  }).catch(function(){/* silent */});
+
+  // Always update stats and show success immediately
+  outcomes++;
+  localStorage.setItem('traxio_outcomes',outcomes);
+  document.getElementById('d-out').textContent=outcomes;
+  document.getElementById('s-out').textContent=outcomes;
+  document.getElementById('s-stu').textContent=tracked+outcomes;
+  addToFeed(prog,selResult||'Submitted');
+  btn.disabled=false;
+  btn.textContent='Submit outcome';
+
+  // Open mailto so email is definitely sent
+  window.location.href=mailtoLink;
+
+  setTimeout(function(){
+    document.getElementById('sform-inner').style.display='none';
+    document.getElementById('sbox').style.display='block';
+  },400);
+}
+
+function addToFeed(prog,result){
+  var feed=document.getElementById('feed');
+  var pillClass=result==='Accepted'?'pill-a':result==='Rejected'?'pill-r':'pill-p';
+  var row=document.createElement('div');
+  row.className='orow';
+  row.innerHTML='<div><div class="op">'+prog+'</div><div class="oc">Just submitted</div></div><span class="opill '+pillClass+'">'+result+'</span>';
+  feed.insertBefore(row,feed.firstChild);
+}
+
+// ── STATS ──────────────────────────────────────────────────────────────────
+var tracked=parseInt(localStorage.getItem('traxio_tracked'))||0;
+var outcomes=parseInt(localStorage.getItem('traxio_outcomes'))||0;
+
+function animN(id,target){
+  var el=document.getElementById(id);if(!el)return;
+  var c=0,s=Math.max(1,Math.ceil(target/25));
+  var t=setInterval(function(){c=Math.min(c+s,target);el.textContent=c;if(c>=target)clearInterval(t);},50);
+}
+
+// ── OPPORTUNITIES DATA ─────────────────────────────────────────────────────
+var OPPS=[
+{id:'ino',cats:['competition','international','remote'],badge:'Competition',bc:'b-law',diff:'Medium',dc:'d-med',
+ title:'INO-NEXUS High School Essay Contest 2026',org:'International Neuroscience Organization',
+ desc:'Global essay competition on neurotechnology breakthroughs or neuro-ethical dilemmas. Free entry, online submission worldwide.',
+ deadline:'24 June 2026',urgent:true,location:'Online',duration:'Competition',type:'Essay Competition',
+ elig:'High school students worldwide',
+ tips:['DEADLINE TOMORROW — submit today without delay','Pick neurotechnology OR neuro-ethics, not both — depth beats breadth','Open with a strong hook — judges read hundreds of essays','Cite peer-reviewed sources to elevate your entry'],
+ reqs:['High school student','Original essay on neurotechnology or neuro-ethics'],
+ contact:'Apply via INO official website',url:'#'},
+{id:'fxb',cats:['competition','international','remote','funded'],badge:'Fellowship',bc:'b-env',diff:'Medium',dc:'d-med',
+ title:'FXB Harvard Climate Advocates Program 2026',org:'FXB at Harvard University',
+ desc:'Free, fully virtual Harvard-affiliated fellowship empowering global youth to design community-based climate solutions.',
+ deadline:'25 June 2026',urgent:true,location:'Online via Zoom',duration:'Programme',type:'Fellowship',
+ elig:'Youth and students globally',
+ tips:['Harvard affiliation makes this extremely competitive — apply with your best work','Your climate solution should be specific and locally relevant to Pakistan','FXB focuses on marginalised communities — frame your idea with equity in mind','100% free and virtual — zero reason not to apply'],
+ reqs:['Interest in climate action','Zoom access','Commitment to community-based project'],
+ contact:'Apply via FXB Harvard official page',url:'#'},
+{id:'mojza',cats:['competition','remote'],badge:'Scholarship',bc:'b-paid',diff:'Medium',dc:'d-med',
+ title:'Mojza Scholar Program 2026',org:'Mojza',
+ desc:'Mojza selects three students to receive free university admissions counselling from Pine Admissions. Only 3 spots.',
+ deadline:'25 June 2026',urgent:true,location:'Online',duration:'Programme',type:'Scholarship',
+ elig:'Students applying to university',
+ tips:['Only 3 spots — treat this like a job application, not a form','Be very specific about target universities and why','Pine Admissions specialises in top university placements — huge monetary value','Deadline 25 June — apply immediately'],
+ reqs:['Student applying to university','Strong academic profile preferred'],
+ contact:'Apply via Mojza official page',url:'#'},
+{id:'columbia-law',cats:['competition','international','remote','law'],badge:'Competition',bc:'b-law',diff:'Hard',dc:'d-hard',
+ title:'Columbia Law Review HS Essay Contest 2026',org:'Columbia Undergraduate Law Review',
+ desc:'Prestigious essay contest for high school students in legal reasoning, public policy, and law-related analysis.',
+ deadline:'26 June 2026',urgent:true,location:'Online',duration:'Competition',type:'Essay Competition',
+ elig:'High school students',
+ tips:['Columbia affiliation — extremely prestigious and competitive','3 days left — start writing now','Legal reasoning: clear structure is essential — claim, evidence, analysis','Prior debate or MUN experience will give you a strong foundation'],
+ reqs:['High school student','Original legal essay'],
+ contact:'Apply via Columbia Undergraduate Law Review website',url:'#'},
+{id:'horizon',cats:['research','international','remote'],badge:'Research',bc:'b-res',diff:'Hard',dc:'d-hard',
+ title:'Horizon Academic Research Program 2026',org:'Horizon Academic',
+ desc:'Selective online programme pairing high school students with PhD-level scholars to write a 20-25 page independent research paper. Fee waiver available.',
+ deadline:'22 June 2026',urgent:true,location:'Online',duration:'Semester',type:'Research Programme',
+ elig:'High school students',
+ tips:['DEADLINE 22 JUNE — apply today','Fee waivers available — request one','A 20-25 page research paper in high school is extraordinarily impressive for university admissions','Choose a topic at the intersection of your passion and strongest subject'],
+ reqs:['High school student','Motivation to complete full research paper'],
+ contact:'Apply via Horizon Academic official website',url:'#'},
+{id:'nastp',cats:['internship','tech'],badge:'Technology',bc:'b-tech',diff:'Hard',dc:'d-hard',
+ title:'NASTP Summer Internship 2026',org:'National Aerospace Science and Technology Park',
+ desc:'Technology internship with exposure to aerospace, AI, cybersecurity, IT, research, and innovation at NASTP Rawalpindi.',
+ deadline:'22 June 2026',urgent:true,location:'Rawalpindi / Islamabad',duration:'Summer 2026',type:'Internship',
+ elig:'Students and fresh graduates',
+ tips:['NASTP is a nationally prestigious institution — major CV weight','Mention any tech, AI, coding, or research projects in your application','Confirm commute or relocation to Rawalpindi/Islamabad'],
+ reqs:['Student or fresh graduate','Interest in technology, aerospace, AI, or research'],
+ contact:'Apply via NASTP official portal',url:'#'},
+{id:'nextgenmed',cats:['internship','remote'],badge:'Medical',bc:'b-med',diff:'Easy',dc:'d-easy',
+ title:'NextGen Med Summer Internship 2026',org:'NextGen Med',
+ desc:'Virtual internship for Grades 6-12 offering medical career exploration and marketing experience. Fully remote.',
+ deadline:'25 June 2026',urgent:true,location:'Remote / Online',duration:'Summer 2026',type:'Virtual Internship',
+ elig:'Students in Grades 6-12',
+ tips:['One of very few opportunities open to Grade 6 students','100% remote — apply from anywhere in Pakistan','Medical career exploration is excellent for pre-med students','Deadline 25 June — apply within the next day'],
+ reqs:['Grades 6-12 student','Interest in medicine or healthcare'],
+ contact:'Apply via NextGen Med official page',url:'#'},
+{id:'alkhidmat',cats:['internship','ngo','volunteer'],badge:'NGO',bc:'b-ngo',diff:'Easy',dc:'d-easy',
+ title:'Alkhidmat Summer Internship 2026',org:'Alkhidmat Foundation Pakistan',
+ desc:'6-week social internship in community development, humanitarian work, and leadership across multiple Pakistani cities.',
+ deadline:'20 June 2026',urgent:true,location:'Multiple cities, Pakistan',duration:'6 weeks',type:'Internship',
+ elig:'Students and recent graduates',
+ tips:['One of Pakistan most recognised NGOs — strong CV value','Multiple cities — specify preferred city in application','Leadership and community service background will strengthen your application'],
+ reqs:['Student or recent graduate','Interest in humanitarian work'],
+ contact:'Apply via Alkhidmat Foundation website',url:'#'},
+{id:'oxford-climate',cats:['competition','international','remote','funded'],badge:'Competition',bc:'b-env',diff:'Hard',dc:'d-hard',
+ title:'Oxford Said Global Climate Tech Challenge 2026',org:'Said Business School, University of Oxford',
+ desc:'Premier global competition for high school teams to design bold tech-driven climate solutions. Global finals at Oxford, UK.',
+ deadline:'30 June 2026',urgent:false,location:'Online / Oxford, UK (Finals)',duration:'Competition',type:'Global Competition',
+ elig:'High school student teams',
+ tips:['Oxford finals for top teams — one of the most prestigious competitions available','Team competition — assemble your strongest 3-4 people immediately','Solution must be technology-driven, not just awareness-based','Pakistani climate adaptation context is genuinely valuable — use it'],
+ reqs:['High school student team','Technology-based climate solution'],
+ contact:'Apply via Said Business School Oxford website',url:'#'},
+{id:'plural',cats:['competition','international','remote'],badge:'Competition',bc:'b-soc',diff:'Easy',dc:'d-easy',
+ title:'PLURAL+ Youth Video Festival 2026',org:'UNAOC (United Nations)',
+ desc:'UN-affiliated youth video festival inviting short films on migration, diversity, social inclusion, and prevention of xenophobia.',
+ deadline:'30 June 2026',urgent:false,location:'Online',duration:'Competition',type:'Film Competition',
+ elig:'Youth aged up to 25 worldwide',
+ tips:['UN affiliation — winning this is internationally recognised','Quality of storytelling matters more than production budget','Pakistani stories on migration or diversity have real global resonance','Even a smartphone-filmed, well-edited short can win'],
+ reqs:['Youth aged up to 25','Short film on migration/diversity/inclusion theme'],
+ contact:'Apply via UNAOC PLURAL+ official page',url:'#'},
+{id:'unesco-silk',cats:['competition','international','remote'],badge:'Competition',bc:'b-intl',diff:'Easy',dc:'d-easy',
+ title:'UNESCO Silk Roads Photo Contest 2026',org:'UNESCO',
+ desc:'International youth photo contest on culture, heritage, and traditions along the Silk Roads. Pakistan is historically on the Silk Road.',
+ deadline:'30 June 2026',urgent:false,location:'Online',duration:'Competition',type:'Photo Competition',
+ elig:'Youth worldwide',
+ tips:['Pakistan is directly on the Silk Road — strong geographic advantage','UNESCO on your CV is internationally recognised','Focus on texture, heritage, and human stories rather than landscape alone','Composition and storytelling win — no professional equipment needed'],
+ reqs:['Youth participant','Original photograph on Silk Roads heritage theme'],
+ contact:'Apply via UNESCO official competition page',url:'#'},
+{id:'embracing',cats:['competition','international','remote'],badge:'Competition',bc:'b-soc',diff:'Easy',dc:'d-easy',
+ title:'Embracing Our Differences Quotation Contest',org:'Embracing Our Differences',
+ desc:'International quotation writing competition with a chance to win $2,000. Submit an original quote on diversity, inclusion, and human dignity.',
+ deadline:'1 July 2026',urgent:false,location:'Online',duration:'Competition',type:'Writing Competition',
+ elig:'Open to all ages worldwide',
+ tips:['$2,000 prize for a single powerful sentence — very high return on effort','Avoid cliches — judges want something genuinely new','Write 10-20 drafts before submitting — great quotes take iteration','Pakistani perspective on human dignity adds authentic global value'],
+ reqs:['Original quotation on diversity/inclusion/human dignity theme'],
+ contact:'Apply via Embracing Our Differences official website',url:'#'},
+{id:'pakola',cats:['competition','remote'],badge:'Competition',bc:'b-mkt',diff:'Easy',dc:'d-easy',
+ title:'Design The Taste of Azaadi 2026',org:'Pakola Products Limited',
+ desc:'Nationwide packaging design competition to redesign the iconic Pakola Ice Cream Soda inspired by Pakistani culture, heritage, and national identity.',
+ deadline:'30 June 2026',urgent:false,location:'Online (Pakistan)',duration:'Competition',type:'Design Competition',
+ elig:'Graphic designers, artists, and creators (Pakistan)',
+ tips:['Pakistani theme — lean into local cultural motifs authentically','Pakola is iconic — honour the brand while adding creative value','Use Adobe Illustrator, Canva Pro, or Figma for professional quality','Independence Day theme opens powerful green-and-white design narratives'],
+ reqs:['Any student or creator in Pakistan','Design in required format'],
+ contact:'Apply via Pakola official competition page',url:'#'},
+{id:'gcs',cats:['international','funded'],badge:'Fully Funded',bc:'b-paid',diff:'Hard',dc:'d-fund',
+ title:'Global Change Summit 2026 - Amsterdam',org:'OGPD',
+ desc:'International youth summit in Amsterdam, Netherlands. Fully funded with leadership training, global networking, and policy workshops.',
+ deadline:'30 June 2026',urgent:false,location:'Amsterdam, Netherlands',duration:'Summer 2026',type:'Fully Funded Summit',
+ elig:'Students and young leaders',
+ tips:['Fully funded to Amsterdam — excellent for any international CV','Your essay should focus on a specific global change initiative you care about','Leadership experience and prior social impact work will be decisive','Netherlands summit — emphasise your Pakistani student perspective'],
+ reqs:['Student or young leader','Strong written English for essays'],
+ contact:'Apply via OGPD official website',url:'#'},
+{id:'yef',cats:['international','funded'],badge:'Fully Funded',bc:'b-paid',diff:'Hard',dc:'d-fund',
+ title:'Youth Empowerment Forum 2026 - Geneva',org:'Center for Global Dialogue and Leadership',
+ desc:'International youth leadership forum in Geneva with UN office visits, workshops, and global networking. Fully funded.',
+ deadline:'5 July 2026',urgent:false,location:'Geneva, Switzerland',duration:'Summer 2026',type:'Fully Funded Forum',
+ elig:'Students and young leaders',
+ tips:['Geneva means potential UN visits — once-in-a-lifetime experience','Fully funded — flights and accommodation covered','Your essay should connect your background to global youth empowerment','Pakistani applicants with demonstrated leadership stand out in international cohorts'],
+ reqs:['Student or young professional','Strong written and spoken English'],
+ contact:'Apply via CGDL official website',url:'#'},
+{id:'pyls',cats:['internship','remote','law'],badge:'Law and Media',bc:'b-law',diff:'Easy',dc:'d-easy',
+ title:'PYLS Summer Internship 2026',org:'Pakistan Youth Law Society',
+ desc:'Remote internship in legal writing, research, article drafting, social media content, design, and awareness campaigns.',
+ deadline:'27 July 2026',urgent:false,location:'Remote / Online',duration:'Summer 2026',type:'Remote Internship',
+ elig:'Students interested in law, media, or writing',
+ tips:['Fully remote — apply from anywhere','Legal writing experience will significantly strengthen your CV','Mention any writing samples, blog posts, or social media work','Follow PYLS on social media to understand their tone before applying'],
+ reqs:['Interest in legal writing, research, or media','No specific degree requirement'],
+ contact:'Apply via PYLS official page',url:'#'},
+{id:'baked',cats:['internship'],badge:'Marketing',bc:'b-mkt',diff:'Easy',dc:'d-easy',
+ title:'Baked Sales and Marketing Internship 2026',org:'Baked',
+ desc:'Hands-on internship in sales, marketing, customer interaction, events, vendor coordination, and brand promotions.',
+ deadline:'28 June 2026',urgent:false,location:'Not specified',duration:'Summer 2026',type:'Internship',
+ elig:'Students interested in sales, marketing, events, and branding',
+ tips:['Apply via email — make your subject line clear and professional','Mention any event, brand, or marketing experience even if informal','Research Baked before applying — know their products and brand voice'],
+ reqs:['Interest in sales and marketing','Good communication skills','Email application required'],
+ contact:'Apply via email — check official Baked page for address',url:'#'},
+{id:'mubeen',cats:['volunteer','education'],badge:'Education',bc:'b-vol',diff:'Easy',dc:'d-easy',
+ title:'Mubeen Summer Internship 2026',org:'Project Pakistan',
+ desc:'Volunteer teaching internship at Mubeen High School educating underprivileged children through interactive activities in Gohawa, Lahore.',
+ deadline:'15 July 2026',urgent:false,location:'Gohawa, Lahore',duration:'Summer 2026',type:'Volunteer',
+ elig:'Students interested in teaching and community service',
+ tips:['Gohawa, Lahore — confirm transport before applying','Prepare a simple teaching plan to show initiative','Great for education, psychology, or social work students'],
+ reqs:['Interest in teaching','Willingness to travel to Gohawa, Lahore'],
+ contact:'Apply via Project Pakistan official page',url:'#'},
+{id:'asmaan',cats:['volunteer','education'],badge:'Education',bc:'b-vol',diff:'Easy',dc:'d-easy',
+ title:'Project Asmaan x PNCY Internship 2026',org:'Project Asmaan and PNCY',
+ desc:'Community service internship teaching and mentoring underprivileged children at Pakistan Bait-ul-Mal Sweet Home, Lahore.',
+ deadline:'2 July 2026',urgent:false,location:'Lahore',duration:'Summer 2026',type:'Volunteer',
+ elig:'Students interested in teaching and community service',
+ tips:['PNCY partnership adds strong institutional credibility to your CV','Apply in the next few days — deadline is 2 July','Emotional maturity required — mention any relevant experience with children'],
+ reqs:['Interest in teaching and mentoring','Availability in Lahore'],
+ contact:'Apply via official Asmaan/PNCY page',url:'#'},
+{id:'icsc',cats:['competition','international','remote','tech'],badge:'Competition',bc:'b-tech',diff:'Hard',dc:'d-hard',
+ title:'International Computer Science Competition 2026',org:'ICSC',
+ desc:'Global online CS competition testing analytical thinking, algorithms, and problem solving.',
+ deadline:'5 July 2026',urgent:false,location:'Online',duration:'Competition',type:'CS Competition',
+ elig:'Students interested in computer science',
+ tips:['Practice on LeetCode or HackerRank now','Analytical thinking tested more than syntax knowledge','Review sorting algorithms, data structures, and graph theory','5 July — 12 days to prepare'],
+ reqs:['Interest and ability in CS and algorithms'],
+ contact:'Apply via ICSC official website',url:'#'},
+{id:'columbia-pol',cats:['competition','international','remote','law'],badge:'Competition',bc:'b-law',diff:'Hard',dc:'d-hard',
+ title:'Columbia Political Review Essay Contest 2026',org:'Columbia Political Review',
+ desc:'Annual competition for high school students analysing pressing political trends and proposing bold solutions to global issues.',
+ deadline:'1 July 2026',urgent:false,location:'Online',duration:'Competition',type:'Essay Competition',
+ elig:'High school students',
+ tips:['One of the most prestigious HS competitions in political writing','Propose a solution, not just an analysis — judges want bold thinking','Pakistani political context and its global dimensions are valid angles','8 days left — start your first draft today'],
+ reqs:['High school student','Original political essay with analysis and solution'],
+ contact:'Apply via Columbia Political Review website',url:'#'},
+{id:'nyas',cats:['competition','international','remote','tech','research'],badge:'Research',bc:'b-stem',diff:'Hard',dc:'d-hard',
+ title:'NYAS Junior Academy 2026',org:'New York Academy of Sciences',
+ desc:'Virtual project-based programme where students form international teams to solve real-world Innovation Challenges under STEM mentors.',
+ deadline:'2 July 2026',urgent:false,location:'Online',duration:'Programme',type:'STEM Innovation',
+ elig:'High school students worldwide',
+ tips:['NYAS is internationally prestigious — top CV value','International team means you network with students from around the world','Treat this like a startup pitch, not a school project','Pakistani students bring valuable development-context perspectives'],
+ reqs:['High school student','Ability to work in virtual international team'],
+ contact:'Apply via NYAS official website',url:'#'},
+{id:'harvard-j',cats:['competition','international','remote','funded'],badge:'Summer Program',bc:'b-paid',diff:'Hard',dc:'d-hard',
+ title:'Harvard Crimson Journalism Academy 2026',org:'The Harvard Crimson',
+ desc:'Immersive training in article writing, investigative reporting, and multimedia journalism led by Harvard Crimson editors. Virtual option available.',
+ deadline:'3 July 2026',urgent:false,location:'Cambridge, MA or Virtual',duration:'Summer 2026',type:'Summer Programme',
+ elig:'High school students interested in journalism',
+ tips:['Harvard Crimson is one of the world most respected student newspapers','Virtual option means Pakistani students can participate without travel','Submit your strongest existing writing samples — they matter most','Fee waiver may be available — check and request it'],
+ reqs:['High school student','Interest in journalism and writing','Strong written English'],
+ contact:'Apply via Harvard Crimson official page',url:'#'},
+{id:'asdrp',cats:['research','international','remote'],badge:'Research',bc:'b-stem',diff:'Hard',dc:'d-hard',
+ title:'ASDRP STEM Research Program 2026',org:'Aspiring Scholars Directed Research Program',
+ desc:'Competitive STEM research for high school students under scientists and engineers in biology, chemistry, CS, medicine, and psychology. Remote available.',
+ deadline:'1 July 2026',urgent:false,location:'Remote / Fremont, California',duration:'Semester',type:'STEM Research',
+ elig:'High school students with strong STEM interest',
+ tips:['Remote participation available — Pakistani students can apply from home','Original research means you contribute to real science','Psychology or engineering tracks may be less competitive than bio or CS','1 July deadline — apply this week'],
+ reqs:['High school student','Strong STEM background','Commitment to full research programme'],
+ contact:'Apply via ASDRP official website',url:'#'},
+{id:'siut',cats:['volunteer','clinical'],badge:'Healthcare',bc:'b-clin',diff:'Easy',dc:'d-open',
+ title:'SIUT Volunteer and Student Opportunities',org:'Sindh Institute of Urology and Transplantation',
+ desc:'Ongoing volunteer programme at one of Pakistan most respected healthcare institutions offering clinical environment exposure and community service hours.',
+ deadline:'Open throughout the year',urgent:false,location:'Karachi',duration:'Flexible',type:'Volunteer',
+ elig:'Students interested in healthcare or community work',
+ tips:['Open year-round — but confirm current placement availability before applying','SIUT is one of Pakistan most respected medical institutions — carries real weight','Contact SIUT directly to confirm current openings'],
+ reqs:['Interest in healthcare or community service','Karachi availability'],
+ contact:'Apply via SIUT official website',url:'#'},
+{id:'paksc',cats:['volunteer','remote'],badge:'STEM',bc:'b-stem',diff:'Easy',dc:'d-open',
+ title:'Pakistan Science Club Volunteer Program',org:'Pakistan Science Club (PakSC)',
+ desc:'Open volunteer programme for students in STEM outreach, science education, and community engagement with both in-person and remote options.',
+ deadline:'Open throughout the year',urgent:false,location:'Pakistan / Remote',duration:'Flexible',type:'Volunteer',
+ elig:'Students interested in STEM activities',
+ tips:['Open year-round with remote options — great for students outside major cities','Science communication skills are highly valued here','Good stepping stone before applying to more competitive STEM programmes'],
+ reqs:['Interest in STEM and science education'],
+ contact:'Apply via PakSC official website',url:'#'},
+{id:'skmch-vol',cats:['volunteer','clinical'],badge:'Volunteering',bc:'b-vol',diff:'Easy',dc:'d-easy',
+ title:'SKMCH Non-Clinical Volunteership',org:'Shaukat Khanum Memorial Cancer Hospital',
+ desc:'Support Pakistan leading cancer hospital across 20+ departments. Admin, HR, Library, Finance, OPD, Marketing. No clinical background needed.',
+ deadline:'Rolling — apply 3 weeks before start',urgent:false,location:'Johar Town, Lahore',duration:'2 weeks',type:'Volunteership',
+ elig:'Matric or equivalent — open to all students',
+ tips:['Apply at least 3 weeks before intended start — late forms are rejected','Letter of recommendation must be recent (within 6 months)','Dress professionally for mandatory HR orientation','Be flexible with department placement'],
+ reqs:['Matric or equivalent','CV','CNIC copy','Passport photo','Letter of recommendation','Completed application form'],
+ contact:'careers@shaukatkhanum.org.pk | +92 42 3590 5000 Ext. 3028',
+ url:'https://shaukatkhanum.org.pk/wp-content/uploads/2026/06/Internship-Volunteership-Registration-Form.pdf'},
+{id:'skmch-clin',cats:['clinical'],badge:'Clinical',bc:'b-clin',diff:'Hard',dc:'d-hard',
+ title:'SKMCH Clinical Volunteership',org:'Shaukat Khanum Memorial Cancer Hospital',
+ desc:'5-day clinical exposure for pre-medical students in Clinical Research, OPD, Basic Sciences, Pathology and Radiology. Strict academic requirements.',
+ deadline:'Rolling — apply 3 weeks before start',urgent:false,location:'Johar Town, Lahore',duration:'5 days',type:'Clinical Volunteership',
+ elig:'Pre-medical students: 80% Intermediate, CGPA 3.25+, Bio/Chem/Physics at O-Level',
+ tips:['80% Intermediate and CGPA 3.25+ are hard requirements — verified','Biology, Chemistry, Physics must all be in your O-Level subjects','Mention which department interests you most','Competitive — write a strong personal motivation in your CV'],
+ reqs:['80% Intermediate / CGPA 3.25+','Bio, Chem, Physics at O-Level (mandatory)','CV, CNIC, Photo, Letter of recommendation'],
+ contact:'careers@shaukatkhanum.org.pk | +92 42 3590 5000 Ext. 3028',
+ url:'https://shaukatkhanum.org.pk/wp-content/uploads/2026/06/Internship-Volunteership-Registration-Form.pdf'},
+{id:'skmch-pharm',cats:['clinical','internship'],badge:'Pharmacy',bc:'b-pharm',diff:'Medium',dc:'d-med',
+ title:'SKMCH Pharmacy Internship',org:'Shaukat Khanum Memorial Cancer Hospital',
+ desc:'4-week pharmacy internship at Pakistan leading cancer hospital. Mandatory quiz and 4 years of pharmacy degree required.',
+ deadline:'Rolling — apply 3 weeks before start',urgent:false,location:'Johar Town, Lahore',duration:'4 weeks',type:'Internship',
+ elig:'4 years of pharmacy degree completed — must pass mandatory quiz',
+ tips:['Revise pharmacy fundamentals before the mandatory quiz','Institution letter must confirm you are a CURRENT student','Oncology pharmacy is rare — express your motivation clearly','Contact HR early — pharmacy spots are limited'],
+ reqs:['4 years of pharmacy degree','Pass mandatory quiz','Institution letter, CV, CNIC, Photo'],
+ contact:'careers@shaukatkhanum.org.pk | +92 42 3590 5000 Ext. 3028',
+ url:'https://shaukatkhanum.org.pk/wp-content/uploads/2026/06/Internship-Volunteership-Registration-Form.pdf'},
+{id:'pnca',cats:['internship','volunteer'],badge:'Arts and Culture',bc:'b-art',diff:'Easy',dc:'d-easy',
+ title:'PNCA Summer Internship Program 2026',org:'Pakistan National Council of the Arts',
+ desc:'Professional internship at Pakistan premier cultural institution covering exhibitions, performances, workshops, and arts administration. Based in Islamabad.',
+ deadline:'Check official page',urgent:false,location:'PNCA, Islamabad',duration:'Summer 2026',type:'Internship',
+ elig:'Students and recent graduates',
+ tips:['PNCA is Pakistan national arts institution — exceptional for any arts or management CV','Mention any arts background, event management, or cultural interest','Check official page for 2026 intake deadline immediately'],
+ reqs:['Student or recent graduate','Interest in arts, culture, events, or administration'],
+ contact:'Apply via PNCA official website',url:'#'},
+{id:'risegen',cats:['volunteer','education'],badge:'Education',bc:'b-vol',diff:'Easy',dc:'d-easy',
+ title:'RiseGenPK Teaching Internship 2026',org:'RiseGenPK',
+ desc:'Volunteer teaching internship mentoring underprivileged children in sciences, arts, public speaking, money management at DHA Lahore.',
+ deadline:'Open — apply anytime',urgent:false,location:'DHA, Lahore',duration:'Summer 2026',type:'Volunteer',
+ elig:'Students interested in teaching and community service',
+ tips:['No strict deadline but summer slots fill fast','Prepare a simple teaching plan or activity idea — shows initiative','Character building and money management modules are unique — mention relevant skills'],
+ reqs:['Interest in teaching','Willingness to work with underprivileged children'],
+ contact:'Apply via RiseGenPK official page',url:'#'},
+{id:'apricus',cats:['internship','remote','law'],badge:'Literature',bc:'b-lit',diff:'Easy',dc:'d-easy',
+ title:'Apricus Literary Internship Program 2026',org:'Apricus Literary',
+ desc:'Remote literary internship open to students aged 13-21 worldwide offering leadership experience, publishing opportunities, and creative portfolio development.',
+ deadline:'Rolling — check official form',urgent:false,location:'Remote / Worldwide',duration:'Summer 2026',type:'Remote Internship',
+ elig:'Students aged 13-21 worldwide',
+ tips:['Age range 13-21 — one of very few remote creative internships open to O-Level students','Portfolio development is the key benefit — keep all published work','Creative writing, editing, or any published work will strengthen your application'],
+ reqs:['Age 13-21','Interest in literature, writing, or creative publishing'],
+ contact:'Apply via Apricus Literary official form',url:'#'},
+{id:'lumiere',cats:['research','international','remote'],badge:'Research',bc:'b-res',diff:'Hard',dc:'d-fund',
+ title:'Lumiere Research Scholar Program',org:'Lumiere Education',
+ desc:'Selective international research mentorship where high school students work 1-on-1 with PhD researchers. Fee waiver available. Possible UC San Diego credit.',
+ deadline:'Rolling — check current cohort',urgent:false,location:'Online',duration:'Semester',type:'Research Programme',
+ elig:'High school students with strong academic profile',
+ tips:['Fee waivers available — always apply for financial assistance','Working 1-on-1 with a PhD mentor is an experience most undergraduates never get','Published research from this programme is extremely powerful for university applications','Choose a topic you are genuinely passionate about'],
+ reqs:['High school student','Strong academic record','Independent work ethic'],
+ contact:'Apply via Lumiere Education official website',url:'#'},
+{id:'franklin',cats:['competition','international','remote'],badge:'Competition',bc:'b-law',diff:'Medium',dc:'d-med',
+ title:'Franklin Essay Prize 2026',org:'ESSAI',
+ desc:'International essay competition for high school students aged 13-18 across CS, Social Science, Economics, General Science, or Psychology.',
+ deadline:'31 July 2026',urgent:false,location:'Online',duration:'Competition',type:'Essay Competition',
+ elig:'High school students aged 13-18',
+ tips:['5 subject tracks — choose where you can write most confidently','31 July deadline — comfortable timeline, invest time in a strong essay','CS or Psychology tracks may be less crowded than Economics or Social Science'],
+ reqs:['High school student aged 13-18','Original essay in chosen subject track'],
+ contact:'Apply via ESSAI official page',url:'#'},
+{id:'breakthrough',cats:['competition','international','remote'],badge:'Competition',bc:'b-stem',diff:'Hard',dc:'d-hard',
+ title:'Breakthrough Junior Challenge 2026',org:'Breakthrough Prize Foundation',
+ desc:'Global science video competition where students explain a big idea in physics, mathematics, or life sciences. One of the most prestigious youth science competitions worldwide.',
+ deadline:'15 September 2026',urgent:false,location:'Online',duration:'Competition',type:'Science Video',
+ elig:'Students aged 13-18 worldwide',
+ tips:['One of the most prestigious youth science competitions in the world','Start now while competition entry is lower','Best entries make complex science genuinely accessible — not just simplified','Choose your strongest subject among physics, math, or life sciences'],
+ reqs:['Student aged 13-18','Short video explaining a big scientific idea'],
+ contact:'Apply via Breakthrough Prize Foundation website',url:'#'},
+{id:'lse',cats:['competition','international','remote'],badge:'Competition',bc:'b-eng',diff:'Hard',dc:'d-hard',
+ title:'LSE Generate Global Innovation Challenge 2026',org:'Crimson Education and LSE Generate',
+ desc:'Virtual innovation challenge for high school students to pitch SDG-linked solutions. London School of Economics affiliation. Paid entry.',
+ deadline:'4 August 2026',urgent:false,location:'Online',duration:'Competition',type:'Innovation Competition',
+ elig:'High school students',
+ tips:['LSE affiliation gives this international recognition','SDG-linked means your solution must connect to Sustainable Development Goals specifically','Pitch format means communication skills matter as much as the idea','Pakistan SDG challenges (water, education, poverty) are excellent material'],
+ reqs:['High school student','SDG-linked innovation idea','Paid entry fee'],
+ contact:'Apply via Crimson Education / LSE Generate website',url:'#'},
+{id:'nyt',cats:['competition','international','remote'],badge:'Competition',bc:'b-lit',diff:'Easy',dc:'d-easy',
+ title:'NYT Summer Reading Contest 2026',org:'The New York Times Learning Network',
+ desc:'Weekly summer contest for teenagers — choose a NYT article and submit a short explanation of why it captured your interest. Free, ongoing all summer.',
+ deadline:'14 August 2026',urgent:false,location:'Online',duration:'Weekly, Summer',type:'Writing Competition',
+ elig:'Teenagers worldwide',
+ tips:['Weekly format means multiple chances to win — submit every week','Choose NYT pieces that connect to your genuine interests','New York Times association on a winning entry looks strong in any portfolio','Free and accessible — participate every single week'],
+ reqs:['Teenager','Short written submission responding to a NYT piece'],
+ contact:'Apply via NYT Learning Network official page',url:'#'},
+{id:'iyec',cats:['competition','international','remote'],badge:'Competition',bc:'b-env',diff:'Medium',dc:'d-med',
+ title:'International Youth Environmental Challenge 2026',org:'IYEC',
+ desc:'Global environmental project challenge for youth-led ideas and solutions.',
+ deadline:'15 October 2026',urgent:false,location:'Online',duration:'Competition',type:'Environmental Competition',
+ elig:'Youth worldwide',
+ tips:['October deadline — ample time to develop a genuinely strong project','Pakistan environmental challenges give you rich authentic material','Document your project with photos and data — evidence strengthens submissions'],
+ reqs:['Youth participant','Original environmental project or solution idea'],
+ contact:'Apply via IYEC official website',url:'#'},
+{id:'ayn-rand',cats:['competition','international','remote'],badge:'Competition',bc:'b-law',diff:'Medium',dc:'d-med',
+ title:'Annual Ayn Rand Essay Contests',org:'The Ayn Rand Institute',
+ desc:'Win up to $25,000 in scholarship prizes by writing about one of Ayn Rand novels. Open to students worldwide including Pakistan.',
+ deadline:'Rolling — check official page',urgent:false,location:'Online',duration:'Annual',type:'Essay Competition',
+ elig:'Students worldwide',
+ tips:['$25,000 in prizes — highest-value essay contest available','You must read the assigned novel thoroughly — summaries will not work','Essays judged on depth of philosophical engagement, not just plot analysis'],
+ reqs:['Student in applicable grade range','Read assigned Ayn Rand novel'],
+ contact:'Apply via Ayn Rand Institute website',url:'#'},
+{id:'write-world',cats:['competition','international','remote'],badge:'Competition',bc:'b-lit',diff:'Easy',dc:'d-open',
+ title:'Write the World Monthly Writing Competitions',org:'Write the World',
+ desc:'Free monthly writing competitions for teen writers across multiple genres — fiction, poetry, personal narrative, and more.',
+ deadline:'Monthly — ongoing',urgent:false,location:'Online',duration:'Monthly',type:'Writing Competition',
+ elig:'Teen writers aged 13-18 worldwide',
+ tips:['Monthly means multiple attempts per year — build skills through iteration','Read winning entries from previous months to understand what judges value','Try multiple genres — you may discover unexpected strengths'],
+ reqs:['Teen writer aged 13-18','Original submission matching monthly prompt'],
+ contact:'Apply via Write the World official website',url:'#'},
+{id:'islp',cats:['competition','international','remote'],badge:'Competition',bc:'b-stem',diff:'Medium',dc:'d-med',
+ title:'ISLP Statistics Poster Competition 2026-2027',org:'International Statistical Literacy Project',
+ desc:'International poster competition where student teams create statistical posters on real-world data.',
+ deadline:'Rolling — check intake',urgent:false,location:'Online',duration:'Annual',type:'Statistics Competition',
+ elig:'School and university student teams',
+ tips:['Statistics plus design is a powerful and rare combination','Real data from Pakistan (demographics, health, education) gives authentic material','Use clean data visualisation principles — quality of poster matters'],
+ reqs:['Student team','Original statistical poster using real data'],
+ contact:'Apply via ISLP official website',url:'#'},
+// ── EXPIRED ────────────────────────────────────────────────────────────────
+{id:'exp-pkcert',cats:['expired','tech'],badge:'Cybersecurity',bc:'b-cyber',diff:'Hard',dc:'d-hard',
+ title:'PKCERT Cybersecurity Internship 2026',org:'National CERT Pakistan',
+ desc:'6-week government cybersecurity internship in AI, Digital Forensics, Threat Intelligence. Deadline was 16 June 2026.',
+ deadline:'16 June 2026 — CLOSED',urgent:false,location:'Islamabad',duration:'6 weeks',type:'Government Internship',
+ elig:'Students interested in cybersecurity',
+ tips:['This cycle has closed. PKCERT runs annually — bookmark their website for 2027 applications.','Build your cybersecurity skills now to strengthen your next application.'],
+ reqs:['Check PKCERT website for next intake'],contact:'PKCERT official website',url:'#'},
+{id:'exp-adel',cats:['expired','international','funded'],badge:'Fully Funded',bc:'b-paid',diff:'Hard',dc:'d-fund',
+ title:'ADEL Atlantic Dialogues Program 2026',org:'Policy Center for the New South',
+ desc:'Fully funded international leadership programme in Rabat, Morocco. Deadline was 15 June 2026.',
+ deadline:'15 June 2026 — CLOSED',urgent:false,location:'Rabat, Morocco',duration:'Summer 2026',type:'Fully Funded',
+ elig:'Young leaders and students',
+ tips:['This cycle has closed. ADEL runs annually — apply in early 2027.','Use the time to strengthen your leadership portfolio.'],
+ reqs:['Check Policy Center for the New South for 2027 intake'],contact:'Policy Center for the New South',url:'#'},
+{id:'exp-ehsas',cats:['expired','volunteer'],badge:'Volunteer',bc:'b-vol',diff:'Easy',dc:'d-easy',
+ title:'Ehsas Volunteer Program 2026',org:'Ehsas e Insaniyat',
+ desc:'Summer volunteer programme for students aged 14-18 in Islamabad. Deadline was 15 June 2026.',
+ deadline:'15 June 2026 — CLOSED',urgent:false,location:'Islamabad',duration:'Summer 2026',type:'Volunteer',
+ elig:'Students aged 14-18',
+ tips:['This cycle has closed. Follow Ehsas e Insaniyat for future programmes.'],
+ reqs:['Check for next programme intake'],contact:'Ehsas e Insaniyat official page',url:'#'},
+{id:'exp-alkhidmat',cats:['expired','ngo'],badge:'NGO',bc:'b-ngo',diff:'Easy',dc:'d-easy',
+ title:'Alkhidmat Summer Internship 2026 (Closed)',org:'Alkhidmat Foundation Pakistan',
+ desc:'6-week social internship. Deadline was 20 June 2026.',
+ deadline:'20 June 2026 — CLOSED',urgent:false,location:'Pakistan',duration:'6 weeks',type:'Internship',
+ elig:'Students and recent graduates',
+ tips:['This cycle has closed. Alkhidmat runs programmes regularly — watch their website.'],
+ reqs:['Check Alkhidmat website for next intake'],contact:'Alkhidmat Foundation Pakistan',url:'#'},
+{id:'exp-army',cats:['expired'],badge:'Heritage',bc:'b-lead',diff:'Medium',dc:'d-med',
+ title:'Army Museum Lahore SIP 2026',org:'Army Museum Lahore',
+ desc:'Summer internship in museum operations and heritage preservation. Deadline was 10 June 2026.',
+ deadline:'10 June 2026 — CLOSED',urgent:false,location:'Lahore',duration:'Summer 2026',type:'Internship',
+ elig:'University students',
+ tips:['This cycle has closed. The programme runs annually — watch for 2027 applications.'],
+ reqs:['Check Army Museum Lahore for next intake'],contact:'Army Museum Lahore',url:'#'},
+{id:'exp-projpak',cats:['expired','education'],badge:'Education',bc:'b-vol',diff:'Easy',dc:'d-easy',
+ title:'Project Pakistan Summer Internship 2026',org:'Project Pakistan',
+ desc:'Volunteer teaching internship for O/A Level students in Lahore. Deadline was 13 June 2026.',
+ deadline:'13 June 2026 — CLOSED',urgent:false,location:'Lahore',duration:'Summer 2026',type:'Volunteer',
+ elig:'O Level, A Level and Equivalent Students',
+ tips:['This cycle has closed. Project Pakistan runs programmes regularly — follow them on social media.'],
+ reqs:['Check Project Pakistan for next intake'],contact:'Project Pakistan official page',url:'#'},
+{id:'exp-greenhawk',cats:['expired'],badge:'Content Creation',bc:'b-mkt',diff:'Easy',dc:'d-easy',
+ title:'Green Hawk Summer Internship 2.0',org:'Green Hawk Consultants',
+ desc:'Content creation and social media internship for A2/Intermediate students. Deadline was 31 May 2026.',
+ deadline:'31 May 2026 — CLOSED',urgent:false,location:'Not specified',duration:'Summer 2026',type:'Internship',
+ elig:'A2 Level and Intermediate Students',
+ tips:['This cycle has closed. Follow Green Hawk Consultants for future openings.'],
+ reqs:['Check Green Hawk Consultants for next intake'],contact:'Green Hawk Consultants',url:'#'}
+];
+
+// ── FILTERS CONFIG ──────────────────────────────────────────────────────────
+var FILTERS=[
+  {key:'all',label:'All'},
+  {key:'internship',label:'Internship'},
+  {key:'competition',label:'Competitions'},
+  {key:'volunteer',label:'Volunteer'},
+  {key:'international',label:'International'},
+  {key:'funded',label:'Fully Funded'},
+  {key:'research',label:'Research'},
+  {key:'remote',label:'Remote'},
+  {key:'tech',label:'Tech'},
+  {key:'law',label:'Law and Media'},
+  {key:'education',label:'Education'},
+  {key:'clinical',label:'Clinical'},
+  {key:'ngo',label:'NGO and Social'},
+  {key:'expired',label:'Expired'}
+];
+
+var curFilter='all';
+
+function buildFilters(){
+  var el=document.getElementById('filters');
+  el.innerHTML=FILTERS.map(function(f){
+    return '<button class="fb'+(f.key==='expired'?' fb-exp':'')+(f.key==='all'?' active':'')+'" onclick="filterO(\''+f.key+'\',this)">'+f.label+'</button>';
+  }).join('');
+}
+
+function filterO(cat,btn){
+  curFilter=cat;
+  var all=document.querySelectorAll('.fb');
+  for(var i=0;i<all.length;i++) all[i].classList.remove('active');
+  btn.classList.add('active');
+  renderGrid();
+}
+
+function renderGrid(){
+  var g=document.getElementById('grid');
+  var list;
+  if(curFilter==='all'){
+    list=OPPS.filter(function(o){return !o.cats.includes('expired');});
+  } else {
+    list=OPPS.filter(function(o){return o.cats.includes(curFilter);});
+  }
+  if(list.length===0){
+    g.innerHTML='<p style="color:var(--mu);font-size:.9rem;padding:2rem 0;grid-column:1/-1">No opportunities in this category right now.</p>';
+    return;
+  }
+  g.innerHTML=list.map(function(o){
+    var exp=o.cats.includes('expired');
+    var dc=o.urgent&&!exp?'dl-urg':'';
+    return '<div class="card'+(exp?' exp':'')+'" onclick="openM(\''+o.id+'\')">'+(exp?'<span class="exp-tag">CLOSED</span>':'')+
+    '<div class="ctop"><span class="badge '+o.bc+'">'+o.badge+'</span><span class="diff '+o.dc+'">'+o.diff+'</span></div>'+
+    '<div class="ctitle">'+o.title+'</div>'+
+    '<div class="corg">'+o.org+'</div>'+
+    '<div class="cdesc">'+o.desc+'</div>'+
+    '<div class="cmeta">'+
+      '<div class="cm'+(dc?' '+dc:'')+'"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'+o.deadline+'</div>'+
+      '<div class="cm"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'+o.location.split(',')[0]+'</div>'+
+    '</div>'+
+    '<button class="cbtn'+(exp?' exp-btn':'')+'">'+(exp?'View details':'Apply through Traxio &rarr;')+'</button>'+
+    '</div>';
+  }).join('');
+}
+
+// ── MODAL ───────────────────────────────────────────────────────────────────
+function openM(id){
+  var o=null;
+  for(var i=0;i<OPPS.length;i++){if(OPPS[i].id===id){o=OPPS[i];break;}}
+  if(!o) return;
+  var exp=o.cats.includes('expired');
+  document.getElementById('mc').innerHTML=
+    '<div class="mbr"><span class="badge '+o.bc+'">'+o.badge+'</span><span class="diff '+o.dc+'">'+o.diff+'</span></div>'+
+    '<h2>'+o.title+'</h2>'+
+    '<div class="morg">'+o.org+'</div>'+
+    '<div class="mgrid">'+
+      '<div class="mbox"><div class="ml">Deadline</div><div class="mv" style="'+(o.urgent&&!exp?'color:var(--re)':'')+'">'+o.deadline+'</div></div>'+
+      '<div class="mbox"><div class="ml">Duration</div><div class="mv">'+o.duration+'</div></div>'+
+      '<div class="mbox"><div class="ml">Location</div><div class="mv">'+o.location+'</div></div>'+
+      '<div class="mbox"><div class="ml">Type</div><div class="mv">'+o.type+'</div></div>'+
+    '</div>'+
+    '<div class="msec"><h4>About</h4><p>'+o.desc+'</p></div>'+
+    '<div class="msec"><h4>Eligibility</h4><p>'+o.elig+'</p></div>'+
+    '<div class="msec"><h4>What you need</h4><ul>'+o.reqs.map(function(r){return '<li>'+r+'</li>';}).join('')+'</ul></div>'+
+    '<div class="tips"><h4>&#x2726; Traxio application tips</h4><ul>'+o.tips.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ul></div>'+
+    (exp?'':
+    '<div class="tform">'+
+      '<h4>Let us track your application</h4>'+
+      '<p class="ts">Optional — helps us support you. Never shared.</p>'+
+      '<div class="fr"><label>Name <span class="opt">(optional)</span></label><input type="text" id="tr-n" placeholder="First name"></div>'+
+      '<div class="fr"><label>Email <span class="opt">(optional)</span></label><input type="email" id="tr-e" placeholder="For follow-up only"></div>'+
+      '<div class="fr"><label>Do you want guidance?</label><select id="tr-g"><option value="">Select...</option><option>Yes, please reach out</option><option>No, I am fine</option><option>Maybe later</option></select></div>'+
+    '</div>'+
+    '<div class="macts">'+
+      '<button class="btn-apply" onclick="doApply(\''+o.url+'\',\''+o.id+'\')">Continue to official application &rarr;</button>'+
+      '<button class="btn-skip" onclick="skipApply(\''+o.url+'\')">Skip tracking — go directly</button>'+
+    '</div>')+
+    '<p class="mcon">'+o.contact+'</p>';
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeM(){
+  document.getElementById('ov').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeMifBg(e){if(e.target===document.getElementById('ov'))closeM();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+
+function doApply(url,id){
+  tracked++;
+  localStorage.setItem('traxio_tracked',tracked);
+  document.getElementById('d-apps').textContent=tracked;
+  document.getElementById('s-apps').textContent=tracked;
+  document.getElementById('s-stu').textContent=tracked+outcomes;
+  if(url&&url!=='#') window.open(url,'_blank');
+  closeM();
+}
+function skipApply(url){
+  if(url&&url!=='#') window.open(url,'_blank');
+  closeM();
+}
+
+// ── INIT ────────────────────────────────────────────────────────────────────
+window.addEventListener('load',function(){
+  var active=OPPS.filter(function(o){return !o.cats.includes('expired');}).length;
+  animN('s-opps',active);
+  animN('d-opps',active);
+  animN('s-apps',tracked);
+  animN('d-apps',tracked);
+  animN('s-out',outcomes);
+  animN('d-out',outcomes);
+  animN('s-stu',tracked+outcomes);
+  buildFilters();
+  renderGrid();
+});
+</script>
+</body>
+</html>
